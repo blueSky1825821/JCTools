@@ -49,8 +49,8 @@ abstract class ConcurrentCircularArrayQueueL0Pad<E> extends AbstractQueue<E>
 abstract class ConcurrentCircularArrayQueue<E> extends ConcurrentCircularArrayQueueL0Pad<E>
     implements MessagePassingQueue<E>, IndexedQueue, QueueProgressIndicators, SupportsIterator
 {
-    protected final long mask;
-    protected final E[] buffer;
+    protected final long mask;// 计算数组下标的掩码
+    protected final E[] buffer;// 存放队列数据的数组
 
     ConcurrentCircularArrayQueue(int capacity)
     {

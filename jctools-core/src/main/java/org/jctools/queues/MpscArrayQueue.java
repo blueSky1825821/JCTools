@@ -97,7 +97,7 @@ abstract class MpscArrayQueueProducerLimitField<E> extends MpscArrayQueueMidPad<
     private final static long P_LIMIT_OFFSET = fieldOffset(MpscArrayQueueProducerLimitField.class, "producerLimit");
 
     // First unavailable index the producer may claim up to before rereading the consumer index
-    private volatile long producerLimit;
+    private volatile long producerLimit;// 生产者索引的最大值
 
     MpscArrayQueueProducerLimitField(int capacity)
     {
@@ -146,7 +146,7 @@ abstract class MpscArrayQueueConsumerIndexField<E> extends MpscArrayQueueL2Pad<E
 {
     private final static long C_INDEX_OFFSET = fieldOffset(MpscArrayQueueConsumerIndexField.class, "consumerIndex");
 
-    private volatile long consumerIndex;
+    private volatile long consumerIndex; // 消费者索引
 
     MpscArrayQueueConsumerIndexField(int capacity)
     {

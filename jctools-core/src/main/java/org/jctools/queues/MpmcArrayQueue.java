@@ -50,7 +50,7 @@ abstract class MpmcArrayQueueProducerIndexField<E> extends MpmcArrayQueueL1Pad<E
 {
     private final static long P_INDEX_OFFSET = fieldOffset(MpmcArrayQueueProducerIndexField.class, "producerIndex");
 
-    private volatile long producerIndex;
+    private volatile long producerIndex; // 生产者的索引
 
     MpmcArrayQueueProducerIndexField(int capacity)
     {
@@ -193,7 +193,7 @@ public class MpmcArrayQueue<E> extends MpmcArrayQueueL3Pad<E>
         long cIndex = Long.MIN_VALUE;// start with bogus value, hope we don't need it
         do
         {
-            pIndex = lvProducerIndex();
+            pIndex = lvProducerIndex();// 获取生产者索引
             seqOffset = calcCircularLongElementOffset(pIndex, mask);
             seq = lvLongElement(sBuffer, seqOffset);
             // consumer has not moved this seq forward, it's as last producer left
